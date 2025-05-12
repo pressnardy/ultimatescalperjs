@@ -130,7 +130,7 @@ async function getPrevTrades(symbol, setup_period){
 function addGridValues(grid, values) {
 
     for (let value of values) {
-        const data_element = document.createElement("div"); // Create a new element for each data
+        const data_element = document.createElement("div");
         data_element.classList.add("data");
         data_element.innerText = value;
         if (value === "buy") {

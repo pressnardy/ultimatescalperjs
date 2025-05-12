@@ -1,0 +1,16 @@
+{
+  "type": "module",
+  "name": "strategies",
+  "version": "1.0.0",
+  "description": "trading strategies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "strategies"
+  ],
+  "author": "pressnardy",
+  "license": "ISC"
+}
+

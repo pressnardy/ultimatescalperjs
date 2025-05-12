@@ -1,0 +1,10 @@
+
+{
+  "dca_settings": {
+    "period": "1D", "pivotLookback": 90
+
+  },
+  "swing_settings": {
+    "period": "4h", "pivotLookback": 30, "tp1RRR": 2, "tp2RRR": 3, "slPadding": 0.011
+  }
+}

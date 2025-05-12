@@ -141,14 +141,29 @@ function addGridValues(grid, values) {
     }
 }
 
+function createCard (trade) {
+    const time = timeToUtc(trade.time)
+    const cardParent = document.createElement("div")
+    cardParent.innerHTML = `<div class="card">
+        <div class="card-header">
+            <div class="card-title ${trade.direction}">${trade.direction}</div>
+        </div>
+        <div class="card-body">
+            <p><span class="data-title">Time:</span> ${time}</p>
+            <p><span class="data-title">Entry:</span> ${trade.entry_price}</p>
+            <p><span class="data-title">Stop Loss:</span> ${trade.sl}</p>
+            <p><span class="data-title">Take Profit 1:</span> ${trade.tp1}</p>
+            <p><span class="data-title">Take Profit 2:</span> ${trade.tp2}</p>
+        </div>
+    </div>`
+    return cardParent.firstChild
+}
+
 function fillTrades(prevTrades) {
-    const grid = document.getElementById("signal-data")
+    const tradeSignals = document.getElementById("trade-signals")
     for (let trade of prevTrades) {
-        const values = [
-            timeToUtc(trade.time), trade.direction, trade.entry_price,
-            to2dp(trade.sl), to2dp(trade.tp1), to2dp(trade.tp2)
-        ]
-        addGridValues(grid, values)
+        const card = createCard(trade)
+        tradeSignals.appendChild(card)
     }
 }
 
@@ -156,7 +171,7 @@ async function plotChart(symbol, setup_period, containerId, chartOptions){
     createChartContainer(containerId)
     const container = document.getElementById(containerId)
     const chart = LightweightCharts.createChart(container, chartOptions);
-;
+
     const candlestickSeries = chart.addSeries(LightweightCharts.CandlestickSeries);
     const chartData = await getChartData(symbol, setup_period)
 

@@ -1,0 +1,60 @@
+:root {
+    --orange: white;
+    --background-grey: #e7e7e7;
+    --dark-gray: rgb(49, 48, 48);
+    --blue: #05cdff;
+    --brown: rgb(255, 115, 0)
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    background: black;
+}
+
+.card {
+    background: black;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+    width: fit-content;
+    border: 1px solid var(--dark-gray);
+    /*margin: 20px;*/
+
+}
+.card-body {
+    background: black;
+    color: white;
+    border-top: 1px solid var(--dark-gray);
+}
+
+.buy {
+    color: var(--blue);
+    font-size: 20px;
+
+}
+.sell {
+    font-size: 20px;
+}
+
+p {
+    font-weight: bold;
+}
+span.data-title {
+    font-weight: normal;
+    padding-right: 4px;
+}
+
+@media (max-width: 600px) {
+    .card-header {
+        padding: 0;
+        font-size: 14px;
+        text-align: center;
+    }
+}

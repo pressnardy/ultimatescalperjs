@@ -14,8 +14,10 @@ body {
     margin: 20px;
     background: black;
     height: 100vh;
+    /*width: 100vw;*/
     box-sizing: border-box;
     min-height: fit-content;
+    /*min-width: fit-content;*/
 
 }
 
@@ -37,14 +39,14 @@ body {
 }
 
 #title {
-    width: 80%;
+    width: 100%;
     max-width: 1200px;
-    border-radius: 8px;
     padding: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 32px
+    gap: 32px;
+    margin-bottom: 16px;
 }
 
 #coins-wrapper {
@@ -104,12 +106,17 @@ h3#signals-heading {
 
 
 .signal {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
     font-size: 14px;
-    width: 80%;
-    min-width: 800px;
-    border: 1px solid rgb(70, 68, 68);
+    width: 100%;
+    /*min-width: 800px;*/
+    /*border: 1px solid rgb(70, 68, 68);*/
+    padding: 32px;
+    border-radius: 8px;
 }
 
 .item {
@@ -204,4 +211,62 @@ div.sell {
     color: rgb(255, 115, 0);
     font-weight: bold;
     text-transform: capitalize;
+}
+
+@media (max-width: 600px) {
+    html {
+        width: 100%;
+        height: 100%;
+    }
+    body {
+        /*font-size: 24px;*/
+        width: 100%;
+        height: 100%
+    }
+
+    select.drop-down {
+        /*font-size: 24px;*/
+    }
+
+    h5.coins-title {
+        font-size: 16px;
+    }
+
+    .signal {
+        width: 100%;
+        flex-direction: column;
+
+    }
+
+    #chart-area {
+        width: 100%;
+        height: 50%;
+    }
+    h3.signals-heading {
+        font-size: 40px;
+    }
+    div.data {
+        /*font-size: 20px;*/
+    }
+
+    div.signal {
+        /*width: 600px;*/
+        /*max-width: 600px;*/
+        /*overflow: scroll;*/
+    }
+    .item {
+        padding: 8px 4px;
+    }
+    .data {
+        padding: 8px 4px;
+
+    }
+    #title {
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        background: black;
+        border-bottom: 1px solid #313030FF;
+    }
 }

@@ -204,7 +204,7 @@ plotChart(symbol, setupPeriod, containerId, chartOptions)
 
 
 function deleteTrades(){
-    const parent = document.getElementById("signal-data")
+    const parent = document.getElementById("trade-signals")
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild)
     }

@@ -1,4 +1,5 @@
 import * as strategies from '../strategies/index.js';
+import * as adjustments from './adjustments.js';
 
 
 const containerId = "chart"
@@ -127,20 +128,6 @@ async function getPrevTrades(symbol, setup_period){
     }
 }
 
-function addGridValues(grid, values) {
-
-    for (let value of values) {
-        const data_element = document.createElement("div");
-        data_element.classList.add("data");
-        data_element.innerText = value;
-        if (value === "buy") {
-            data_element.classList.add("buy")}
-        if (value === "sell") {
-            data_element.classList.add("sell")}   
-        grid.appendChild(data_element);
-    }
-}
-
 function createCard (trade) {
     const time = timeToUtc(trade.time)
     const cardParent = document.createElement("div")
@@ -167,13 +154,17 @@ function fillTrades(prevTrades) {
     }
 }
 
+
+
 async function plotChart(symbol, setup_period, containerId, chartOptions){
     createChartContainer(containerId)
     const container = document.getElementById(containerId)
     const chart = LightweightCharts.createChart(container, chartOptions);
+    adjustments.adjustTimeScale(chart)
 
     const candlestickSeries = chart.addSeries(LightweightCharts.CandlestickSeries);
     const chartData = await getChartData(symbol, setup_period)
+
 
     const candles = await chartData.candles
     const buyLevels = chartData.buyLevels
@@ -181,6 +172,7 @@ async function plotChart(symbol, setup_period, containerId, chartOptions){
     candlestickSeries.setData(candles)
     plotLevels(chart, candles, buyLevels, '#05cdff')
     plotLevels(chart, candles, sellLevels, '#fc9608')
+
 
     let prevTrades = await getPrevTrades(symbol, setup_period)
     const markers = prevTrades.markers
@@ -230,4 +222,7 @@ period.addEventListener("change", () => {
     plotChart(symbol, setupPeriod, containerId, chartOptions)
 })
 
+
+
+// Call function initially and update on resize
 

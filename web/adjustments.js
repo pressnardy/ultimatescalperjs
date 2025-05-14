@@ -4,9 +4,10 @@ function adjustTimeScale(chart) {
     timeScale.applyOptions({ rightOffset: 5 })
 }
 
-// Example usage:
-// const chart = LightweightCharts.createChart(document.body, chartOptions);
+const legendHTML = '<div class="legend"><span class="legend-item buy">Buy</span><span class="legend-item sell">Sell</span></div>';
+
 
 
 
 export { adjustTimeScale };
+

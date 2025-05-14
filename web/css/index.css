@@ -258,7 +258,10 @@ div.sell {
     text-transform: capitalize;
 }
 
-
+a {
+    text-decoration: none;
+    color: white;
+}
 
 @media (max-width: 600px) {
     html {

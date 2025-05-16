@@ -150,7 +150,7 @@ function fillTrades(prevTrades) {
     const tradeSignals = document.getElementById("trade-signals")
     for (let trade of prevTrades) {
         const card = createCard(trade)
-        tradeSignals.appendChild(card)
+        tradeSignals.prepend(card)
     }
 }
 

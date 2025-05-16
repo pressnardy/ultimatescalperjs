@@ -25,7 +25,8 @@ async function getTrade(symbol, setupPeriod=null, tradePeriod=null) {
 
 async function getPrevTrades(symbol, setupPeriod = null, tradePeriod = null) {
     const scalper = new Scalper(symbol, setupPeriod, tradePeriod);
-    const prevTrades = await scalper.getPrevTrades();
+    let prevTrades = await scalper.getPrevTrades();
+    prevTrades = util.sortTradesByTime(prevTrades);
     // console.log(prevTrades);
     const markers = getMarkers(prevTrades);
 

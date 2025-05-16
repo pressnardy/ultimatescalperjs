@@ -1,5 +1,5 @@
-import fs  from 'fs';
-import * as  settings  from './settings.js';
+import fs from 'fs';
+import * as  settings from './settings.js';
 
 
 function getCandlesFromJson(fileName) {
@@ -152,7 +152,14 @@ function getDefaultPeriod() {
     return settings.ULTIMATE_SCALPING_SETTINGS.default_period;
 }
 
+function sortTradesByTime(trades) {
+    // latest to earliest
+    const sortedTrades = trades.sort((a, b) => b.time - a.time);
+    return JSON.parse(JSON.stringify(sortedTrades));
+}
+
 export {
+    sortTradesByTime,
     getCandlesFromJson,
     highsToLevels,
     lowsToLevels,
